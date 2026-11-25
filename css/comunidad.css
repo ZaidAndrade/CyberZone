@@ -1,0 +1,683 @@
+:root {
+    --bg-main: #0b0b13;
+    --bg-card: #161625;
+    --bg-card-hover: #1d1d30;
+    --border-subtle: #2e2b4f;
+    --accent-purple: #8b5cf6;
+    --accent-purple-hover: #7c3aed;
+    --accent-cyan: #06b6d4;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+
+    /* Fuente Futurista */
+    --font-futuristic: 'Orbitron', 'Inter', -apple-system, sans-serif;
+
+    /* Colores Neón Redes Sociales */
+    --color-youtube: #ff2e4d;
+    --color-tiktok: #00f2fe;
+    --color-tiktok-pink: #fe2c55;
+    --color-instagram: #e1306c;
+    --color-discord: #5865f2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    background: rgba(11, 11, 19, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.brand-logo {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-name {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-cyan);
+}
+
+.btn-reservar {
+    background-color: var(--accent-purple);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.btn-reservar:hover {
+    background-color: var(--accent-purple-hover);
+    box-shadow: 0 0 18px rgba(139, 92, 246, 0.45);
+}
+
+/* --- SECCIÓN COMUNIDAD --- */
+.comunidad-main {
+    padding: 70px 0 100px;
+    background: radial-gradient(circle at 50% 15%, rgba(139, 92, 246, 0.08) 0%, transparent 65%);
+}
+
+.comunidad-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 56px;
+}
+
+.badge-comunidad {
+    display: inline-block;
+    font-family: var(--font-futuristic);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--accent-cyan);
+    background: rgba(6, 182, 212, 0.08);
+    border: 1px solid rgba(6, 182, 212, 0.35);
+    padding: 6px 18px;
+    border-radius: 9999px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+}
+
+.comunidad-titulo {
+    font-family: var(--font-futuristic);
+    font-size: 2.6rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.neon-gradient {
+    background: linear-gradient(135deg, #06b6d4 0%, #a855f7 50%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.comunidad-subtitulo {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* --- CONTENEDOR DE REDES SOCIALES --- */
+.Red-social {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/* --- TARJETAS HORIZONTALES --- */
+.card-social {
+    background: linear-gradient(180deg, #161625 0%, #0f0f1b 100%);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 24px 28px;
+    /* Las dos columnas reparten la tarjeta en una zona izquierda del 30% y otra derecha del 70%. */
+    display: grid;
+    grid-template-columns: 30% 70%;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+/* Barra luminosa superior */
+.card-social::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: transparent;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Glow de fondo interior */
+.card-glow {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: -45px;
+    left: 8%;
+    border-radius: 50%;
+    filter: blur(55px);
+    opacity: 0.15;
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Columna izquierda: centra el icono y el nombre, y separa visualmente las dos zonas. */
+.social-card-left {
+    min-width: 0;
+    height: 100%;
+    padding-right: 20px;
+    border-right: 1px solid rgba(148, 163, 184, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Columna derecha: mantiene la descripción y el botón ordenados en vertical. */
+.social-card-content {
+    min-width: 0;
+    padding-left: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+}
+
+/* Indicador circular decorativo en la parte superior de la información. */
+.social-indicator {
+    width: 9px;
+    height: 9px;
+    flex: 0 0 9px;
+    margin-bottom: 12px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 12px currentColor;
+}
+
+/* Contenedor del Icono */
+.social-icon-wrapper {
+    width: 68px;
+    height: 68px;
+    flex: 0 0 68px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* TÍTULO GRANDE CON FUENTE MODERNO FUTURISTA */
+.social-title {
+    font-family: var(--font-futuristic);
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.social-desc {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+/* Botones de acción */
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    align-self: flex-end;
+    width: auto;
+    max-width: 100%;
+    padding: 11px 18px;
+    border-radius: 12px;
+    font-family: var(--font-futuristic);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+/* === ESTILOS ESPECÍFICOS POR PLATAFORMA === */
+
+/* 1. YOUTUBE */
+.card-youtube .card-glow {
+    background: var(--color-youtube);
+}
+
+.card-youtube .social-icon-wrapper {
+    color: var(--color-youtube);
+}
+
+.card-youtube .social-indicator {
+    color: var(--color-youtube);
+}
+
+.card-youtube .social-title {
+    color: #ffffff;
+}
+
+.card-youtube:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 46, 77, 0.55);
+    box-shadow: 0 16px 40px rgba(255, 46, 77, 0.22);
+}
+
+.card-youtube:hover::before {
+    background: var(--color-youtube);
+    box-shadow: 0 0 18px var(--color-youtube);
+}
+
+.card-youtube:hover .social-title {
+    color: var(--color-youtube);
+    text-shadow: 0 0 24px rgba(255, 46, 77, 0.7);
+}
+
+.card-youtube:hover .social-icon-wrapper {
+    transform: scale(1.1);
+    background: rgba(255, 46, 77, 0.12);
+}
+
+.btn-youtube {
+    background: rgba(255, 46, 77, 0.1);
+    color: #ff5e75;
+    border-color: rgba(255, 46, 77, 0.35);
+}
+
+.btn-youtube:hover {
+    background: var(--color-youtube);
+    color: #ffffff;
+    box-shadow: 0 0 22px rgba(255, 46, 77, 0.6);
+}
+
+/* 2. TIKTOK */
+.card-tiktok .card-glow {
+    background: var(--color-tiktok);
+}
+
+.card-tiktok .social-icon-wrapper {
+    color: var(--color-tiktok);
+}
+
+.card-tiktok .social-indicator {
+    color: var(--color-tiktok);
+}
+
+.card-tiktok .social-title {
+    color: #ffffff;
+}
+
+.card-tiktok:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 242, 254, 0.55);
+    box-shadow: 0 16px 40px rgba(0, 242, 254, 0.22);
+}
+
+.card-tiktok:hover::before {
+    background: linear-gradient(90deg, var(--color-tiktok), var(--color-tiktok-pink));
+    box-shadow: 0 0 18px var(--color-tiktok);
+}
+
+.card-tiktok:hover .social-title {
+    color: var(--color-tiktok);
+    text-shadow: 0 0 24px rgba(0, 242, 254, 0.7);
+}
+
+.card-tiktok:hover .social-icon-wrapper {
+    transform: scale(1.1);
+    background: rgba(0, 242, 254, 0.12);
+}
+
+.btn-tiktok {
+    background: rgba(0, 242, 254, 0.1);
+    color: #38f9d7;
+    border-color: rgba(0, 242, 254, 0.35);
+}
+
+.btn-tiktok:hover {
+    background: var(--color-tiktok);
+    color: #0b0b13;
+    font-weight: 800;
+    box-shadow: 0 0 22px rgba(0, 242, 254, 0.6);
+}
+
+/* 3. INSTAGRAM */
+.card-instagram .card-glow {
+    background: var(--color-instagram);
+}
+
+.card-instagram .social-icon-wrapper {
+    color: #f7537b;
+}
+
+.card-instagram .social-indicator {
+    color: var(--color-instagram);
+}
+
+.card-instagram .social-title {
+    color: #ffffff;
+}
+
+.card-instagram:hover {
+    transform: translateY(-8px);
+    border-color: rgba(225, 48, 108, 0.55);
+    box-shadow: 0 16px 40px rgba(225, 48, 108, 0.22);
+}
+
+.card-instagram:hover::before {
+    background: linear-gradient(90deg, #f09433, #dc2743, #bc1888);
+    box-shadow: 0 0 18px #dc2743;
+}
+
+.card-instagram:hover .social-title {
+    background: linear-gradient(135deg, #f77737 0%, #f56040 30%, #e1306c 60%, #c13584 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 16px rgba(225, 48, 108, 0.6));
+}
+
+.card-instagram:hover .social-icon-wrapper {
+    transform: scale(1.1);
+    background: rgba(225, 48, 108, 0.12);
+}
+
+.btn-instagram {
+    background: rgba(225, 48, 108, 0.1);
+    color: #ff6b8b;
+    border-color: rgba(225, 48, 108, 0.35);
+}
+
+.btn-instagram:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: #ffffff;
+    box-shadow: 0 0 22px rgba(225, 48, 108, 0.6);
+}
+
+/* 4. DISCORD */
+.card-discord .card-glow {
+    background: var(--color-discord);
+}
+
+.card-discord .social-icon-wrapper {
+    color: var(--color-discord);
+}
+
+.card-discord .social-indicator {
+    color: var(--color-discord);
+}
+
+.card-discord .social-title {
+    color: #ffffff;
+}
+
+.card-discord:hover {
+    transform: translateY(-8px);
+    border-color: rgba(88, 101, 242, 0.55);
+    box-shadow: 0 16px 40px rgba(88, 101, 242, 0.28);
+}
+
+.card-discord:hover::before {
+    background: var(--color-discord);
+    box-shadow: 0 0 18px var(--color-discord);
+}
+
+.card-discord:hover .social-title {
+    color: var(--color-discord);
+    text-shadow: 0 0 24px rgba(88, 101, 242, 0.8);
+}
+
+.card-discord:hover .social-icon-wrapper {
+    transform: scale(1.1);
+    background: rgba(88, 101, 242, 0.15);
+}
+
+.btn-discord {
+    background: rgba(88, 101, 242, 0.15);
+    color: #828ff7;
+    border-color: rgba(88, 101, 242, 0.4);
+}
+
+.btn-discord:hover {
+    background: var(--color-discord);
+    color: #ffffff;
+    box-shadow: 0 0 22px rgba(88, 101, 242, 0.65);
+}
+
+/* --- FOOTER --- */
+.footer {
+    background-color: #07070c;
+    border-top: 1px solid var(--border-subtle);
+    padding: 50px 0;
+    margin-top: 40px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.footer-brand h4 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.footer-brand p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.hashtag {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--accent-cyan);
+    margin-bottom: 18px;
+}
+
+.social-links {
+    display: flex;
+    gap: 14px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.social-links a:hover {
+    color: #ffffff;
+    border-color: var(--accent-purple);
+    background-color: var(--accent-purple);
+}
+
+.footer-links h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.footer-links ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-cyan);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .comunidad-titulo {
+        font-size: 2.1rem;
+    }
+
+    .card-social {
+        padding: 20px 22px;
+    }
+
+    .social-card-content {
+        padding-left: 20px;
+    }
+
+    .social-title {
+        font-size: 1.1rem;
+    }
+
+    .social-desc {
+        font-size: 0.88rem;
+    }
+}
+
+@media (max-width: 580px) {
+    .comunidad-titulo {
+        font-size: 1.8rem;
+    }
+
+    .card-social {
+        grid-template-columns: minmax(86px, 36%) minmax(0, 64%);
+        padding: 16px 14px;
+        border-radius: 16px;
+    }
+
+    .social-card-left {
+        padding-right: 10px;
+    }
+
+    .social-card-content {
+        padding-left: 14px;
+    }
+
+    .social-icon-wrapper {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+        margin-bottom: 10px;
+        border-radius: 14px;
+    }
+
+    .social-title {
+        font-size: 0.72rem;
+        letter-spacing: 0.03em;
+    }
+
+    .social-indicator {
+        width: 7px;
+        height: 7px;
+        flex-basis: 7px;
+        margin-bottom: 8px;
+    }
+
+    .social-desc {
+        font-size: 0.8rem;
+        line-height: 1.5;
+        margin-bottom: 12px;
+    }
+
+    .social-btn {
+        gap: 5px;
+        padding: 9px 10px;
+        font-size: 0.62rem;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+}
